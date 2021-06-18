@@ -17,10 +17,21 @@ const client = new MongoClient(uri, {
 });
 client.connect((err) => {
   const ordersCollection = client.db("answarIT").collection("personInfo");
+  const contactInfoCollection = client
+    .db("answarIT")
+    .collection("contactInformation");
 
   app.post("/addOrder", (req, res) => {
     const order = req.body;
     ordersCollection.insertOne(order).then((result) => {
+      res.send(result.insertedCount > 0);
+    });
+  });
+
+  // this is for contact page
+  app.post("/addContactInfo", (req, res) => {
+    const order = req.body;
+    contactInfoCollection.insertOne(order).then((result) => {
       res.send(result.insertedCount > 0);
     });
   });
