@@ -9,7 +9,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const port = 5000;
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -37,4 +36,8 @@ client.connect((err) => {
   });
 });
 
-app.listen(port);
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
