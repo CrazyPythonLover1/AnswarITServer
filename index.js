@@ -16,7 +16,7 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 client.connect((err) => {
-  const ordersCollection = client.db("answarIT").collection("personInfo");
+  const ordersCollection = client.db("answarIT").collection("orderInfo");
   const contactInfoCollection = client
     .db("answarIT")
     .collection("contactInformation");
